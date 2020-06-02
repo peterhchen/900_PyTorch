@@ -5,21 +5,6 @@ import torch.nn.functional as F
 import torchvision
 import torchvision.transforms as transforms
 
-torch.set_printoptions(linewidth=120)
-# Check blog post on deeplizard.com for any version 
-# related updates
-print(torch.__version__)
-print(torchvision.__version__)
-
-train_set = torchvision.datasets.FashionMNIST(
-    root='./data'
-    ,train=True
-    ,download=True
-    ,transform=transforms.Compose([
-        transforms.ToTensor()
-    ])
-)
-
 class Network(nn.Module):
     def __init__(self):
         super().__init__()
@@ -76,6 +61,21 @@ class Network(nn.Module):
         print('\nt.min().item():', t.min().item())
 
         return t
+
+torch.set_printoptions(linewidth=120)
+# Check blog post on deeplizard.com for any version 
+# related updates
+print(torch.__version__)
+print(torchvision.__version__)
+
+train_set = torchvision.datasets.FashionMNIST(
+    root='./data'
+    ,train=True
+    ,download=True
+    ,transform=transforms.Compose([
+        transforms.ToTensor()
+    ])
+)
 
 torch.set_grad_enabled(False)
 network = Network()
